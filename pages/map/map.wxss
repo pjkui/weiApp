@@ -1,1 +1,8 @@
 /* pages/map/map.wxss */
+.showInfo{
+    color:#c0c;
+    font-size: 12px;
+}
+.showInfoText{
+ font-family: "微软雅黑","Microsoft Yahei";
+}

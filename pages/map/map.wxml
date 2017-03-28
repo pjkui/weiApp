@@ -1,2 +1,8 @@
 <!--pages/map/map.wxml-->
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{height}}px;"></map>
+<view class="showInfo" style="position:fixed;top:0;">
+<text class="showInfoText">
+距离{{distance}}米\n车牌{{lic}}\n速度{{speed}}\n时间{{dt}}\n短时间{{shortDt}}
+</text>
+
+</view>

@@ -6,11 +6,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
-  getUserInfo:function(cb){
+  getUserInfo: function (cb) {
     var that = this
-    if(this.globalData.userInfo){
+    if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    } else {
       //调用登录接口
       wx.login({
         success: function () {
@@ -18,7 +18,9 @@ App({
             success: function (res) {
               console.log('get User Info');
               console.log(res);
-              that.globalData.userInfo = res.userInfo
+              that.globalData.userInfo = res.userInfo;
+              that.globalData.userInfo.longitude = 0;
+              that.globalData.userInfo.latitude = 0;
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
           })
@@ -26,7 +28,13 @@ App({
       })
     }
   },
-  globalData:{
-    userInfo:null
+  globalData: {
+    userInfo: null,
+    busInfo: {
+      location: {
+        lo: 0,
+        la: 0
+      }
+    }
   }
 })
