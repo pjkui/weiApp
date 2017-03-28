@@ -62,10 +62,13 @@ Page({
         });
         app.getUserInfo(function (userInfo) {
           //更新数据
+          console.log(that);
           that.setData({
             markers: [{
-              iconPath: userInfo.avatarUrl,
+              // iconPath: userInfo.avatarUrl,
+              iconPath: "/resources/others.png",
               id: 0,
+              title: userInfo.nickName,
               latitude: res.latitude,
               longitude: res.longitude,
               width: 25,
@@ -105,7 +108,39 @@ Page({
         })
       }
     })
-    // setInterval(function(){console.log('test interval ')},1000);
+    setInterval(function () { that.updatePosition(that) }, 2000);
+  },
+  updatePosition: function (that) {
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        that.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          markers: [{
+            // iconPath: userInfo.avatarUrl,
+            iconPath: "/resources/others.png",
+            id: 0,
+            title: 'dream pjkui',
+            latitude: res.latitude,
+            longitude: res.longitude,
+            width: 25,
+            height: 25
+          }],
+        });
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '好像无法获得你的位置！O(∩_∩)O~',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      cancel: function (res) {
+
+      }
+    })
   }
+
 
 })
