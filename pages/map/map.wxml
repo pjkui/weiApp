@@ -1,21 +1,23 @@
 
 <!--pages/map/map.wxml-->
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{height}}px;"></map>
-<view class="showInfo" style="flex-direction:column;">
-  <view style="flex-direction:row;">
-    <view class="flex-item bc_green">距离:</view>
-    <view class="flex-item bc_green">{{distance}}米</view>
+<view class="weui-cells weui-cells_after-title showInfo">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">距离:</view>
+    </view>
+    <view class="weui-input">{{distance}}米</view>
   </view>
-  <view style="flex-direction:row;">
-    <view class="flex-item bc_green">车牌:</view>
-    <view class="flex-item bc_green">{{lic}}</view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-label">车牌:</view>
+    <view class="weui-input">{{lic}}</view>
   </view>
-  <view style="flex-direction:row;">
-    <view class="flex-item bc_green">速度:</view>
-    <view class="flex-item bc_green">{{speed}}</view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-label">速度:</view>
+    <view class="weui-input">{{speed}}</view>
   </view>
-    <view style="flex-direction:row;">
-    <view class="flex-item bc_green">时间:</view>
-    <view class="flex-item bc_green">{{dt}}</view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-label">时间:</view>
+    <view class="weui-input">{{dt}}</view>
   </view>
 </view>
