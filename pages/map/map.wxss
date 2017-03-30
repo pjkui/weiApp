@@ -9,3 +9,18 @@
 .flex-item {
   display: inline;
 }
+
+.marquee {
+  white-space: nowrap;
+  overflow:-webkit-marquee;
+  width: 80px;
+  -webkit-marquee-direction:left;
+  -webkit-marquee-speed:normal;
+  -webkit-marquee-style:scroll;
+  -webkit-marquee-repetition:1;
+}
+
+.morelines{
+  color:dodgerblue;
+  padding-left:20px;
+}
