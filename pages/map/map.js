@@ -1,6 +1,7 @@
 // map.js
 //获取应用实例
 var app = getApp()
+var util = require('../../utils/util.js')
 // 引入QQ map SDK核心类
 var QQMapWX = require('../../libs/qqmap-wx-jssdk.js');
 var qqmapsdk;
@@ -21,7 +22,16 @@ Page({
       latitude: 23.099994,
       longitude: 113.324520,
       width: 50,
-      height: 50
+      height: 50,
+      title: '这是你的位置'
+    }, {
+      iconPath: "/resources/bus.png",
+      id: 1,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      width: 50,
+      height: 50,
+      title: '这是班车'
     }],
     polyline: [{
       points: [{
@@ -61,8 +71,6 @@ Page({
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
-
-
           // var latitude = res.latitude
           // var longitude = res.longitude
           // var speed = res.speed
@@ -115,31 +123,22 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
-          height: res.windowHeight
+          height: res.windowHeight - 100
         })
       }
     })
-    setInterval(function () { that.updatePosition(that) }, 2000);
+    setInterval(function () { that.updatePosition(that) }, 5000);
 
   },
   updatePosition: function (that) {
     //update self position 
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success: function (res) {
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude,
-          markers: [{
-            // iconPath: userInfo.avatarUrl,
-            iconPath: "/resources/others.png",
-            id: 0,
-            title: 'dream pjkui',
-            latitude: res.latitude,
-            longitude: res.longitude,
-            width: 25,
-            height: 25
-          }],
+
         });
         if (app.globalData.userInfo) {
           app.globalData.userInfo.latitude = res.latitude;
@@ -158,7 +157,7 @@ Page({
     }),
       //call my server to update bus' position 
       wx.request({
-        url: 'https://www.pjkui.com/bus.php', //仅为示例，并非真实的接口地址
+        url: 'https://blog.pjkui.com/bus.php', //仅为示例，并非真实的接口地址
         // data: {
         //   //x: '',
         //   // y: ''
@@ -187,15 +186,46 @@ Page({
 
           console.log(res.data)
           app.globalData.busInfo = res.data;
+          var tempTransfBusLocation = util.wgs84togcj02(app.globalData.busInfo.location.lo, app.globalData.busInfo.location.la);
+          app.globalData.busInfo.location.lo = tempTransfBusLocation[0];
+          app.globalData.busInfo.location.la = tempTransfBusLocation[1];
           that.setData({
             lic: res.data.location.lic,
             speed: res.data.location.speed,
             dt: res.data.location.dt,
             shortDt: res.data.location.shortDt
           })
+        },
+        fail: function (res) {
+          console.error(res);
+          wx.showToast({
+            title: 'get data from pjkui.com:fail' + JSON.stringify(res),
+            icon: 'success',
+            duration: 2000
+          })
         }
+
       })
     that.setData({
+      markers: [{
+        //user marker
+        iconPath: "/resources/others.png",
+        id: 0,
+        title: app.globalData.userInfo.nickName,
+        longitude: app.globalData.userInfo.longitude,
+        latitude: app.globalData.userInfo.latitude,
+        width: 50,
+        height: 50
+      }, {
+        // bus marker
+        iconPath: "/resources/bus.png",
+        id: 0,
+        title: app.globalData.busInfo.location.lic + ':' + app.globalData.busInfo.location.dt,
+        longitude: app.globalData.busInfo.location.lo,
+        latitude: app.globalData.busInfo.location.la,
+        width: 50,
+        height: 50
+      }],
       polyline: [{
         points: [{
           longitude: app.globalData.userInfo.longitude,

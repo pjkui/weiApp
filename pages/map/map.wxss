@@ -1,8 +1,11 @@
 /* pages/map/map.wxss */
-.showInfo{
-    color:#c0c;
-    font-size: 12px;
+
+.showInfo {
+  color: #000;
+  font-size: 12px;
+  font-family: "微软雅黑", "Microsoft Yahei";
 }
-.showInfoText{
- font-family: "微软雅黑","Microsoft Yahei";
+
+.flex-item {
+  display: inline;
 }

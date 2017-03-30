@@ -1,8 +1,21 @@
+
 <!--pages/map/map.wxml-->
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{height}}px;"></map>
-<view class="showInfo" style="position:fixed;top:0;">
-<text class="showInfoText">
-距离{{distance}}米\n车牌{{lic}}\n速度{{speed}}\n时间{{dt}}\n短时间{{shortDt}}
-</text>
-
+<view class="showInfo" style="flex-direction:column;">
+  <view style="flex-direction:row;">
+    <view class="flex-item bc_green">距离:</view>
+    <view class="flex-item bc_green">{{distance}}米</view>
+  </view>
+  <view style="flex-direction:row;">
+    <view class="flex-item bc_green">车牌:</view>
+    <view class="flex-item bc_green">{{lic}}</view>
+  </view>
+  <view style="flex-direction:row;">
+    <view class="flex-item bc_green">速度:</view>
+    <view class="flex-item bc_green">{{speed}}</view>
+  </view>
+    <view style="flex-direction:row;">
+    <view class="flex-item bc_green">时间:</view>
+    <view class="flex-item bc_green">{{dt}}</view>
+  </view>
 </view>
