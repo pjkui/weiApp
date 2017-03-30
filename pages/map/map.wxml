@@ -25,7 +25,7 @@
         <view class="weui-cell weui-cell_input">
           <view class="weui-label" style="width:50px;">车牌:</view>
           <view class="weui-input">{{lic}}</view>
-          <view class="weui-input morelines">路线详情</view>
+          <view class="weui-input morelines">详情</view>
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-label" style="width:50px;">时间:</view>
