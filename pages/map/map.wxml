@@ -1,23 +1,47 @@
 
 <!--pages/map/map.wxml-->
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{height}}px;"></map>
-<view class="weui-cells weui-cells_after-title showInfo">
-  <view class="weui-cell weui-cell_input">
-    <view class="weui-cell__hd">
-      <view class="weui-label">距离:</view>
+<view class="page__bd page__bd_spacing">
+  <view class="weui-flex">
+    <view class="weui-flex__item">
+      <view class="weui-cells weui-cells_after-title showInfo">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">距离:</view>
+          <view class="weui-input">{{distance}}米</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">车牌:</view>
+          <view class="weui-input">{{lic}}</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">速度:</view>
+          <view class="weui-input">{{speed}}</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">时间:</view>
+          <view class="weui-input">{{dt}}</view>
+        </view>
+      </view>
     </view>
-    <view class="weui-input">{{distance}}米</view>
-  </view>
-  <view class="weui-cell weui-cell_input">
-    <view class="weui-label">车牌:</view>
-    <view class="weui-input">{{lic}}</view>
-  </view>
-  <view class="weui-cell weui-cell_input">
-    <view class="weui-label">速度:</view>
-    <view class="weui-input">{{speed}}</view>
-  </view>
-  <view class="weui-cell weui-cell_input">
-    <view class="weui-label">时间:</view>
-    <view class="weui-input">{{dt}}</view>
+    <view class="weui-flex__item">
+      <view class="weui-cells weui-cells_after-title showInfo">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">距离:</view>
+          <view class="weui-input">{{distance}}米</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">车牌:</view>
+          <view class="weui-input">{{lic}}</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">速度:</view>
+          <view class="weui-input">{{speed}}</view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-label" style="width:50px;">时间:</view>
+          <view class="weui-input">{{dt}}</view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
