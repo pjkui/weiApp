@@ -56,30 +56,30 @@ Page({
       },
       clickable: true
     }],
-    bus: [
-      '沪D40473',
-      '沪D40427',
-      '沪D40472',
-      '沪D40425',
-      '沪D42542',
-      '沪DP3462',
-      '沪D40479',
-      '沪D40443',
-      '沪D40277',
-      '沪D40497',
-      '沪D54186',
-      '沪D40412',
-      '沪D42888',
-      '沪D40470',
-      '沪D61422',
-      '沪D61392',
-      '沪D40407',
-      '沪D54188',
-      '沪DP6146',
-      '沪DB8965',
-      '沪D40437',
+    buses: [
+      {name:'长宁线-沪D40473',value:'沪D-40473',id:0},
+      {name:'浦东蓝村线-沪D40427',value:'沪D-40427',id:1},
+      {name:'浦东张江线-沪D40472',value:'沪D-40472',id:2},
+      {name:'浦东北蔡线-沪D40425',value:'沪D-40425',id:3},
+      {name:'闵行交大线-沪D42542',value:'沪D-42542',id:4},
+      {name:'闵行交大线-沪DP3462',value:'沪D-P3462',id:5},
+      {name:'闵行春申线-沪D40479',value:'沪D-40479',id:6},
+      {name:'闵行银都线-沪D40443',value:'沪D-40443',id:7},
+      {name:'九亭线-沪D40277',value:'沪D-40277',id:8},
+      {name:'嘉定线-沪D40497',value:'沪D-40497',id:9},
+      {name:'嘉定线-沪D54186',value:'沪D-54186',id:10},
+      {name:'杨浦线-沪D40412',value:'沪D-40412',id:11},
+      {name:'杨浦线-沪D42888',value:'沪D-42888',id:12},
+      {name:'宝山顾村线-沪D40470',value:'沪D-40470',id:13},
+      {name:'宝山顾村线-沪D61422',value:'沪D-61422',id:14},
+      {name:'松江线-沪D61392',value:'沪D-61392',id:15},
+      {name:'松江线-沪D40407',value:'沪D-40407',id:16},
+      {name:'泗泾线-沪D54188',value:'沪D-54188',id:17},
+      {name:'泗泾线-沪DP6146',value:'沪D-P6146',id:18},
+      {name:'虹口金桥线-沪DB8965',value:'沪D-B8965',id:19},
+      {name:'虹口金桥线-沪D40437',value:'沪D-40437',id:20},
     ],
-    selectedBus: '沪D40277',
+    selectedBus: '8',
     showBusSelector: false
   },
   regionchange(e) {
@@ -183,10 +183,9 @@ Page({
       //call my server to update bus' position 
       wx.request({
         url: 'https://blog.pjkui.com/bus.php', //仅为示例，并非真实的接口地址
-        // data: {
-        //   //x: '',
-        //   // y: ''
-        // },
+        data: {
+          lic: that.data.buses[that.data.selectedBus].value,
+        },
         header: {
           'content-type': 'application/json'
         },
@@ -289,7 +288,15 @@ Page({
           console.log(res);
         }
       });
-  }
-
-
+  },
+  /**
+   * bus picker
+   */
+   bindBusPickerChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('picker发送选择改变，携带值为', e)
+    this.setData({
+      selectedBus: e.detail.value
+    })
+  },
 })

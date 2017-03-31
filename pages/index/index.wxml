@@ -8,10 +8,15 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-
   <view class="btn-area">
     <navigator url="/pages/map/map?title=test" hover-class="navigator-hover">
       <button type="primary" bindtap="primary"> 我的百万班车 </button>
     </navigator>
   </view>
+</view>
+<view class="weui-footer">
+  <view class="weui-footer__links">
+  </view>
+  <view class="weui-footer__text">本程序为个人开发者业余时间开发</view>
+  <view class="weui-footer__text">Copyright © 2008-2016 pjkui.com</view>
 </view>

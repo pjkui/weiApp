@@ -5,7 +5,7 @@
 var app = getApp()
 Page({
   data: {
-    motto: '点开有惊喜',
+    motto: '点击查看班车信息',
     userInfo: {}
   },
   //事件处理函数
