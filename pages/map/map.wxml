@@ -38,6 +38,7 @@
               <view class="weui-input morelines">更多路线</view>
             </view>
           </picker>
+          <view class="tipsInfo"><view class="tips">{{tipsInfo}}</view></view>
         </view>
       </view>
     </view>

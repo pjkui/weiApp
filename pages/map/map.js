@@ -9,26 +9,27 @@ var qqmapsdk;
 Page({
   data: {
     height: '600',
-    longitude: 113.324520,
-    latitude: 23.099994,
+    longitude: 121.324520,
+    latitude: 31.099994,
     distance: 0,
     lic: 'xxx',
     speed: 0,
     dt: 0,
+    tipsInfo:'',
     shortDt: 0,
     markers: [{
       iconPath: "/resources/others.png",
       id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
+      latitude: 31.099994,
+      longitude: 121.324520,
       width: 50,
       height: 50,
       title: '这是你的位置'
     }, {
       iconPath: "/resources/bus.png",
       id: 1,
-      latitude: 23.099994,
-      longitude: 113.324520,
+      latitude: 31.099994,
+      longitude: 121.324520,
       width: 50,
       height: 50,
       title: '这是班车'
@@ -38,8 +39,8 @@ Page({
         longitude: 113.3245211,
         latitude: 23.10229
       }, {
-        longitude: 113.324520,
-        latitude: 23.21229
+        longitude: 121.324520,
+        latitude: 31.21229
       }],
       color: "#FF0000DD",
       width: 2,
@@ -213,10 +214,21 @@ Page({
           var tempTransfBusLocation = util.wgs84togcj02(app.globalData.busInfo.location.lo, app.globalData.busInfo.location.la);
           app.globalData.busInfo.location.lo = tempTransfBusLocation[0];
           app.globalData.busInfo.location.la = tempTransfBusLocation[1];
+          var serverTime = res.data.location.dt;
+          var tips='';
+          if(serverTime){
+            serverTime = new Date(res.data.location.dt);
+            var now = new Date().getTime();
+            if(now - serverTime>60000){
+              //if server time is not update more than one minutes
+              tips = '班车数据过时1分钟以上，请注意班车动向！'; 
+            }
+          }
           that.setData({
             lic: res.data.location.lic,
             speed: res.data.location.speed,
             dt: res.data.location.dt,
+            tipsInfo:tips,
             shortDt: res.data.location.shortDt
           })
         },

@@ -12,15 +12,38 @@
 
 .marquee {
   white-space: nowrap;
-  overflow:-webkit-marquee;
+  overflow: -webkit-marquee;
   width: 80px;
-  -webkit-marquee-direction:left;
-  -webkit-marquee-speed:normal;
-  -webkit-marquee-style:scroll;
-  -webkit-marquee-repetition:1;
+  -webkit-marquee-direction: left;
+  -webkit-marquee-speed: normal;
+  -webkit-marquee-style: scroll;
+  -webkit-marquee-repetition: 1;
 }
 
-.morelines{
-  color:dodgerblue;
-  padding-left:20px;
+.morelines {
+  color: dodgerblue;
+  padding-left: 20px;
+}
+
+.tipsInfo {
+  overflow: hidden;
+  /* overflow: hidden; */
+  width: 80px;
+}
+
+.tips {
+  color: red;
+  white-space: nowrap;
+  animation: move 8s linear infinite normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(200px);
+  }
+
+  100% {
+    transform: translateX(-200px);
+  }
 }
